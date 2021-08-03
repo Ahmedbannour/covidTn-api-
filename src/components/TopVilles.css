@@ -1,0 +1,13 @@
+
+.MuiCardHeader-title {
+    color: #595959 ;
+    font-family: 'Rhodium Libre', serif!important;
+    font-weight: 700 !important;
+
+}.MuiCardHeader-subheader{
+  color: #595959 ;
+  font-family: 'Montserrat', sans-serif !important;
+    font-weight: 500 !important;
+}.MuiAvatar-fallback {
+  display: none !important;
+}

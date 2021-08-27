@@ -1,14 +1,17 @@
 import React from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
+import ContactUs2 from './components/ContactUs2';
 import TopVilles from './components/TopVilles';
-import {BrowserRouter as Router} from 'react-router-dom';
+import { BrowserRouter as Router , Route , Switch } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
-import CssBaseline from '@material-ui/core/CssBaseline';
 import GeneralInfo from './components/GeneralInfo';
 import Grid from '@material-ui/core/Grid';
+import MapGraph from './components/MapGraph';
+import Statistics from './components/Statistics';
+import DailyCas from './components/DailyCas';
+import Login from './components/Login';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -39,19 +42,38 @@ const useStyles = makeStyles((theme) => ({
 
 function App() {
   const classes = useStyles();
-
   return (
     <Router>
       <Navbar />
         <Container maxWidth="lg" style={{ marginTop : "20px"}}>
-
-        <div className={classes.root}>
-          <Grid  lg={3}>
-            <TopVilles/>
-          </Grid>
-          <Grid lg={9}>
-            <GeneralInfo/>
-          </Grid>
+          <div className={classes.root}>
+            <Switch>
+              <Route exact path='/'>
+                <Grid container spacing={3}>
+                  <Grid  lg={3} xs={12}>
+                    <TopVilles/>
+                  </Grid>
+                  <Grid lg={9} xs={12}>
+                    <GeneralInfo/>
+                  </Grid>
+                </Grid>
+              </Route>
+              <Route exact path='/contact-us'>
+                <ContactUs2 lg={12} sm={12}/>
+              </Route>
+              <Route exact path='/Map'>
+                <MapGraph lg={12} sm={12}/>
+              </Route>
+              <Route exact path='/Statistic'>
+                <Statistics lg={12} sm={12}/>
+              </Route>
+              <Route exact path='/test'>
+                <DailyCas lg={12} sm={12}/>
+              </Route>
+              <Route exact path='/sign-up'>
+                <Login lg={12} sm={12}/>
+              </Route>
+            </Switch>
           </div>
         </Container>
     </Router>

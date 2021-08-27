@@ -1,0 +1,12 @@
+.loginGrid{
+    height: 500px !important;
+}.comingSoonFooter{
+    font-family: 'Rhodium Libre', serif!important;
+    font-size: 25px;
+    font-weight: 900;
+}.comingSoonFooter span{
+    font-family: 'Rhodium Libre', serif!important;
+    font-size: 25px;
+    font-weight: 900;
+    color: #9999ff;
+}

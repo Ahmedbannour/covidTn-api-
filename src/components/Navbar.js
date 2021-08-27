@@ -3,7 +3,8 @@ import {Button } from './Button';
 import {Link} from 'react-router-dom';
 import './Navbar.css';
 import Dropdown from './Dropdown';
-import MenuIcon from '@material-ui/icons/Menu';
+import logo from './../assets/images/coronavirus.png'; 
+
 
 function Navbar (){
     const [click , setClick] =useState(false);
@@ -28,7 +29,7 @@ function Navbar (){
     return (
         <>
         <nav className="navbar">
-            <Link to='/' className="navbar-logo">Covid.<span>Tn</span></Link>
+            <Link to='/' className="navbar-logo">Covid.<span>Tn</span><img src={logo} className="logoImg"  width={20} height={20} /></Link>
             <div className="menu-icon" onClick={handleClick}>
                 <i className={click ? 'fa fa-times' : 'fas fa-bars'}></i>
             </div>
@@ -37,7 +38,7 @@ function Navbar (){
                     <Link to='/' className='nav-links' onClick={closeMobileMenu}> Home </Link>
                 </li>
                 <li className='nav-item' onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                    <Link to='/services' className='nav-links' onClick={closeMobileMenu}> Services <i className="fas fa-caret-down"></i> </Link>
+                    <Link to='#' className='nav-links' onClick={closeMobileMenu}> Visualisation <i className="fas fa-caret-down"></i> </Link>
                     {dropdown && <Dropdown/>}
                 </li>
                 <li className='nav-item'>

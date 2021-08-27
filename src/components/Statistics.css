@@ -1,0 +1,27 @@
+/* .staticCard{
+    height: 300px !important;
+}.navs{
+    padding: 20px;
+}.StaticCat{
+    text-align: center;
+}.StaticCatLink{
+    background-color: #fff;
+    padding : 5px 50px 5px 50px ;
+    border-radius: 10px !important;
+    
+}.StaticCatLink:hover{
+    color: #fff;
+    background-color: #ccccff !important;
+}.active{
+    background-color: #9999ff;
+    color: #fff;
+}
+.StaticCatLink:focus{
+    background-color: #9999ff;
+    color: #fff;
+} */
+
+.MuiTab-root{
+    background-color: #9999ff !important;
+    color: #fff !important;
+}

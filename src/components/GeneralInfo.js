@@ -1,7 +1,5 @@
-import React from 'react';
-import Button from '@material-ui/core/Button';
+import React , { useEffect} from 'react';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardHeader from '@material-ui/core/CardHeader';
 import Grid from '@material-ui/core/Grid';
@@ -11,7 +9,11 @@ import TextField from '@material-ui/core/TextField';
 import {Autocomplete} from '@material-ui/lab';
 import './GeneralInfo.css';
 import Box from '@material-ui/core/Box';
+import useFetch from "../useFetch";
+import GeneralInfoMounth from './GeneralInfoMounth';
+import axios from 'axios';
 
+  
 
 const useStyles = makeStyles((theme) => ({
   '@global': {
@@ -44,66 +46,38 @@ const useStyles = makeStyles((theme) => ({
 const options = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
 
 
-const tiers = [
-  {
-    title: 'Pro',
-    subheader: 'Most popular',
-    price: '15',
-    description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-    ],
-    buttonText: 'Get started',
-    buttonVariant: 'contained',
-  }
-];
-
-const villes = [
-  {
-    nom : 'Ariana',
-    pourcentage : '20',
-    color : 'red'
-  },
-  {
-    nom : 'Manouba',
-    pourcentage : '18',
-    color : '#ff3333'
-  },
-  {
-    nom : 'Monastir',
-    pourcentage : '15',
-    color : '#ff6666'
-  },
-  {
-    nom : 'Sousse',
-    pourcentage : '12',
-    color : '#ff9999'
-  },
-  {
-    nom : 'Mahdia',
-    pourcentage : '9',
-    color : '#ffe6e6'
-  },
-]
-
 
 export default function GeneralInfo() {
     const classes = useStyles();
-    const [value, setValue] = React.useState(options[0]);
-    const [inputValue, setInputValue] = React.useState('');
+    const today = new Date();
+    const month = today.getMonth();
+    const [value, setValue] = React.useState(options[month]);
+    const [inputValue, setInputValue] = React.useState(options[month]);
+    const [months , setMonthes] = React.useState(null);
+
+    console.log(month+1);
+    console.log(months);
+    const fetchData = async()=>{
+      try{
+        const reponse = await axios.get('http://localhost:8000/covid/dataMounth',{params : {month:options.indexOf(value)+1}})
+        console.log(reponse);
+        setMonthes(reponse.data);
+      }catch(e){
+        console.log(e);
+      }
+    }
+    useEffect(()=>{
+      fetchData();
+    }, [value]);
 
   return (
     <React.Fragment >
         <Grid container spacing={1} alignItems="flex-end" >
-          {tiers.map((tier) => (
-            // Enterprise card is full width at sm breakpoint
-            <Grid item key={tier.title} xs={12} >
+            <Grid xs={12} lg={12} >
               <Card>
                 <CardHeader
-                  title= 'Info General ' 
-                  subheader= 'Sur toute la Tunisie'
+                  title= 'General Information ' 
+                  subheader= 'Monthly cases'
                   action={
                     <IconButton>
                          <div>
@@ -133,116 +107,30 @@ export default function GeneralInfo() {
                       <CardContent>
                           <div  className={classes.root}>
                           <Grid  className="cardHead" xs={3} sm={3} md={3} lg={3}>
-                                Jours
+                                Days
                             </Grid>
                             <Grid  className="cardHead headC"  xs={3} sm={3} md={3} lg={3}>
-                                nouveau cas
+                                Active cases 
                             </Grid>
                             <Grid  className="cardHead headC"  xs={3} sm={3} md={3} lg={3}>
-                                nouveau ret
+                                Recovered cases
                             </Grid>
                             <Grid  className="cardHead headC"  xs={3} sm={3} md={3} lg={3}>
-                                nombre de cas active
+                                Deaths cases
                             </Grid>  
                             </div>
                             <br/>
-                            <div  className={classes.root}>
-                                <Grid  className="cardHeadBody" xs={3} sm={3} md={3} lg={12}>
-                                    Premier 10 jours
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={12}>
-                                <Box className="box"  display="inline">
-                                    80
-                                </Box>
-                                <Box className="box"  display="inline">
-                                    {80>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                    <Box className="pourcentage"  display="block">
-                                        7%
-                                      </Box>
-                                </Box>
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={12}>
-                                  <Box className="box"  display="inline">
-                                      40
-                                  </Box>
-                                  <Box className="box"  display="inline">
-                                      {40>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                      <Box className="pourcentage"  display="block">
-                                        -12%
-                                      </Box>
-                                  </Box>
-                                </Grid>
-                                <Grid  className="cardBody nb_act"  xs={3} sm={3} md={3} lg={12}>
-                                      150
-                                </Grid>  
-                            </div>
-                            <div  className={classes.root}>
-                                <Grid  className="cardHeadBody" xs={3} sm={3} md={3} lg={3}>
-                                    Deuxieme 10 jours
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={3}>
-                                <Box className="box"  display="inline">
-                                    50
-                                </Box>
-                                <Box className="box"  display="inline">
-                                    {80>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                    <Box className="pourcentage"  display="block">
-                                        0%
-                                      </Box>
-                                </Box>
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={3}>
-                                  <Box className="box"  display="inline">
-                                      12
-                                  </Box>
-                                  <Box className="box"  display="inline">
-                                      {40>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                      <Box className="pourcentage"  display="block">
-                                        -24%
-                                      </Box>
-                                  </Box>
-                                </Grid>
-                                <Grid  className="cardBody nb_act"  xs={3} sm={3} md={3} lg={3}>
-                                      75
-                                </Grid>  
-                            </div>
-                            <div  className={classes.root}>
-                                <Grid  className="cardHeadBody" xs={3} sm={3} md={3} lg={3}>
-                                    Troixieme 10 jours
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={3}>
-                                <Box className="box"  display="inline">
-                                    0
-                                </Box>
-                                <Box className="box"  display="inline">
-                                    {10>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                    <Box className="pourcentage"  display="block">
-                                        45%
-                                      </Box>
-                                </Box>
-                                </Grid>
-                                <Grid  className="cardBody"  xs={3} sm={3} md={3} lg={3}>
-                                  <Box className="box"  display="inline" >
-                                      140
-                                  </Box>
-                                  <Box className="box"  display="inline">
-                                      {60>50 ? <i class="fas fa-caret-up"> </i> : <i class="fas fa-caret-down"></i>}
-                                      <Box className="pourcentage"  display="block">
-                                        10%
-                                      </Box>
-                                  </Box>
-                                </Grid>
-                                <Grid  className="cardBody nb_act"  xs={3} sm={3} md={3} lg={3}>
-                                      0
-                                </Grid>  
-                            </div>
+                            
+                            <Box className={classes.cardCont}  component="div" my={2} overflow="auto">
+                              {months ? <GeneralInfoMounth mounths = {months} /> : 'Loading ...'}
+                            </Box >
+                            
                       </CardContent>
                   </Card>
                 </CardContent>
 
               </Card>
             </Grid>
-          ))}
         </Grid>
     </React.Fragment>
   );

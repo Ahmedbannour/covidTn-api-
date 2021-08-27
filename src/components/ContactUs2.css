@@ -1,0 +1,97 @@
+.ContactUsbg{
+    background-color: #fff;
+    border-radius: 10px ;
+    padding: 10px;
+}.contactDiv{
+    height: 200px;
+}.ContactUsForm{
+    background-image: url('../ContactBg.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 30px;
+}.gridBgTitle{
+    color:  #595959;
+    font-family: 'Rhodium Libre', serif!important;
+    font-weight: 700 !important;
+    font-size: 25px;
+    text-align: center;
+}.gridBgSubT{
+    margin-top: 20px;
+    color:  #6685ff;
+    font-weight: 500 !important;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 15px;
+}.cardBg{
+    display: flex;
+    margin-top: 40px ;
+}.socialMediaContact{
+    display: flex;
+    margin-top: 100px;
+}.form_contact{
+    display: flex;
+    width: 100%;
+}.formContent{
+    display: flex;
+    margin: 20px;
+}.btnContactForm{
+    text-align: center;
+    margin-top: 20px;
+}.btnContactForm .btn{
+    background-color: #9999ff;
+    color: #fff;
+}.contactInformaionTitre{
+    color: #fff;
+    font-family: 'Rhodium Libre', serif!important;
+    font-weight: 700 !important;
+    font-size: 20px;
+    padding: 0;
+    margin: auto;
+}.contactInfoSubTitre{
+    font-size: 14px;
+}.iconsInformation i{
+    font-size: 20px;
+    color: #ffccff;
+    align-items: center;
+}.icons_contact{
+    align-items: center;
+    margin: auto;
+}.information{
+    align-items: center;
+    color: #fff;
+}.socialBloc{
+    text-align: center;
+    align-items: center;
+}.socialBloc i{
+    color: #fff;
+    transition: .5s;
+}.socialBloc .fa-facebook:hover{
+    color: #38529A;
+}.socialBloc .fa-instagram:hover{
+    color: #D42B73;
+}.socialBloc i:hover{
+    font-size: 30px;
+}.socialBloc .fa-twitter:hover{
+    color: #1c9cea;
+}.socialBloc .fa-linkedin:hover{
+    color: #0073B1;
+}.btnContactForm{
+    text-align: end;
+}#alert Alert.errMessage{
+    background-color: #ff2323;
+    color: #fff;
+    padding : 20px;
+    position: relative;
+    border-radius: 20px;
+    margin: auto;
+}#alert{
+    width: 100% !important;
+}.snacks{
+    width: 100%!important;
+}nobr span i{
+    font-size: 20px ;
+    color: yellow !important;
+    margin : 0 5px 0 5px;
+}

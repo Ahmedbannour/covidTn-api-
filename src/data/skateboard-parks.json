@@ -1,0 +1,7 @@
+{
+  "features": [
+  {
+    "geometry": { "coordinates": [ 35.73339378325941, 10.586523686114319 ] } , "gamme" :"forte" , "nb_cas" : 4500 },
+   { 
+    "geometry": { "coordinates": [ 32.9819987, 11.2870254] } , "gamme" : "faible" , "nb_cas" : 1200 }
+  ]}
